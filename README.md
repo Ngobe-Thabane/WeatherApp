@@ -1,75 +1,103 @@
-# React + TypeScript + Vite
+# Weather Dashboard App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, responsive weather dashboard built with **React** and the **Open-Meteo API**. The app displays the current day’s weather along with a 7-day forecast for the user’s location, or for any custom latitude, longitude, and timezone provided. Styled with a sleek, glassmorphism-inspired UI.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Features
 
-## React Compiler
+- **Auto-detect user location** using browser geolocation.
+- **Custom location input**: enter latitude, longitude, and timezone to view other regions.
+- **7-day forecast** with max/min temperatures, precipitation, windspeed, and condition.
+- **Current day highlight** with weather description.
+- **Responsive design** optimized for both mobile and desktop.
+- **Modern UI** with gradients, glassmorphism, and card-based layout.
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+---
 
-Note: This will impact Vite dev & build performances.
+## Getting Started
 
-## Expanding the ESLint configuration
+### 1. Clone the repository
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+git clone https://github.com/your-username/weather-dashboard-app.git
+cd weather-dashboard-app
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### 2. Install dependencies
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```bash
+npm install
 ```
+
+### 3. Start the development server
+
+```bash
+npm start
+```
+
+The app will be available at `http://localhost:3000/`.
+
+---
+
+## Tech Stack
+
+- **React** – Frontend framework
+- **Tailwind CSS** – Utility-first styling
+- **Open-Meteo API** – Free weather data provider
+- **Geolocation API** – Detects user’s current location
+
+---
+
+## Usage
+
+1. On load, the app fetches your location and displays the current day’s weather and 7-day forecast.
+2. To view another location:
+
+   - Enter **latitude** and **longitude**.
+   - Select a **timezone** (or leave on `auto`).
+   - Click **Update**.
+
+3. Enjoy beautiful weather cards with full forecast data.
+
+---
+
+## Preview
+
+A sample dashboard design:
+
+- **Today’s Weather** – Displayed prominently at the top.
+- **7-Day Forecast** – Displayed in a grid of modern weather cards.
+
+---
+
+## API Reference
+
+Powered by [Open-Meteo API](https://open-meteo.com/).
+
+Example request:
+
+```
+https://api.open-meteo.com/v1/forecast?latitude=35&longitude=139&daily=temperature_2m_max,temperature_2m_min,precipitation_sum,weathercode,windspeed_10m_max&current_weather=true&timezone=auto
+```
+
+---
+
+## Responsiveness
+
+- **Mobile**: Cards stack in a single column for easy scrolling.
+- **Tablet/Desktop**: Grid layout with 2–7 columns depending on screen size.
+
+---
+
+## License
+
+This project is licensed under the **MIT License**.
+
+---
+
+## Acknowledgments
+
+- [Open-Meteo](https://open-meteo.com/) for free weather API.
+- [Tailwind CSS](https://tailwindcss.com/) for fast UI styling.
+- Inspiration from modern weather dashboard designs.
